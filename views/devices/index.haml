@@ -1,0 +1,26 @@
+%h1 All Devices
+
+%table.table.table-hover
+ %thead
+  %tr
+   %th Title
+   %th IP Address 
+   %th Serial Number 
+   %th Description
+   %th Last Updated 
+ -@devices.each do |device|
+  %tr
+   %td
+    %a(href="/devices/#{device.id}/edit")=device.name
+   %td=device.ip
+   %td=device.serial
+   %td=device.description
+   %td=device.id.generation_time.ago_in_words
+ -unless @devices.any?
+  %tfoot
+   %tr
+    %th
+     There are no devices.
+     %a.btn.btn-primary(href="/devices/new") Add a device
+
+

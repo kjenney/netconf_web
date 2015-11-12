@@ -1,0 +1,30 @@
+-# !new_record? => /devices/123456789
+-# new_record? => /devices
+%form(action="/devices#{ !device.new_record? ? "/#{device.id}" : ""}" method="post")
+ %p
+  %label(for="device_name") Name
+  %input(type="text" id="device_name" value="#{device.name}" name="device[name]" class="form-control")
+
+ %p
+  %label(for="device_ip") IP Address
+  %input(type="text" id="device_ip" value="#{device.ip}" name="device[ip]"  class="form-control")
+
+ %p
+  %label(for="device_serial") Serial Number
+  %input(type="text" id="device_serial" value="#{device.serial}" name="device[serial]"  class="form-control")
+
+ %p
+  %label(for="device_description") Description
+  %textarea(name="device[description]" class="form-control")
+   =device.description
+
+ %p
+  -unless device.new_record?
+   %input(type="hidden" name="_method" value="put") 
+  %button.btn.btn-primary
+   -if device.new_record? 
+    Add Device
+   -else
+    Update Device
+  %button.btn.btn-primary
+   Get Data
