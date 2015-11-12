@@ -1,0 +1,18 @@
+-# !new_record? => /devices/123456789
+-# new_record? => /devices
+%h1 Add a Device
+%form(action="/devices" method="post")
+ %p
+  %label(for="device_name") Name
+  %input(type="text" id="device_name" name="device[name]" class="form-control")
+
+ %p
+  %label(for="device_ip") IP Address
+  %input(type="text" id="device_ip" name="device[ip]"  class="form-control")
+
+ %p
+  %label(for="device_description") Description
+  %textarea(name="device[description]" class="form-control")
+ %p
+  %button.btn.btn-primary
+   Add Device 
