@@ -24,14 +24,14 @@ class DeviceFetch
   end
 
   def get_serial(ip)
-     cmd = "cli show version"
+     cmd = "cli show chassis hardware"
      res = DeviceFetch.run_command(ip,cmd)
-     return res.lines[1] 
+     return res.lines[2].split(" ")[1]
   end
 
   def get_model(ip)
      cmd = "cli show version"
      res = DeviceFetch.run_command(ip,cmd)
-     return res.lines[1]
+     return res.lines[3].split(" ")[1].upcase
   end
 end
