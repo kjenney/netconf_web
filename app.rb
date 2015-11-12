@@ -12,16 +12,19 @@ class App < Sinatra::Base
   end
 
   get "/devices" do
+    @title = 'All Devices' 
     @devices = Device.all
     haml :"devices/index"
   end
 
   get "/devices/new" do
+    @title = 'Add New Device' 
     @device = Device.new
     haml :"devices/new"
   end
 
   get "/devices/:id/edit" do
+    @title = 'Edit Device' 
     @device = Device.find params[:id]
     haml :"devices/edit"
   end
